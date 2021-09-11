@@ -1,0 +1,19 @@
+1. Frontend: html, css, javascript
+- main page (give statistics form, look for job by your current skills)
+- stats paga (job statistic average sallary, most wanted skills etc / recommended jobs)
+- login/register page
+- recommended page (view all recomended jobs if user turn on this function) - only for registered users
+- liked page (view all liked jobs) -only for registered users 
+- ability to like job
+
+
+2. backend: django, javascript (tensorflow, pandas, numpy - for machine learning)
+- login/register
+- recomended system
+- search bar with auto-sugestions
+- searching system
+
+
+3. database: postgresql
+4. static file host service: aws
+5. app host service: heroku
