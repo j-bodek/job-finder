@@ -110,7 +110,7 @@ form {
 }
 
 .segment {
-    padding: 32px 0;
+    padding: 0;
     text-align: center;
 }
 
@@ -129,6 +129,7 @@ label {
     display: block;
     margin-bottom: 24px;
     width: 100%;
+    text-align: center;
 }
 
 input {
@@ -293,4 +294,94 @@ button.red {
     border: 1px solid grey;
     border-radius: 20px;
     cursor: pointer;
+}
+
+/* LOGIN/REGISTER */
+
+
+.checkbox-effect:not(:checked),
+.checkbox-effect:checked {
+    position: absolute;
+    left: -9999px;
+}
+
+.checkbox_text {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* checkbox effect #1 */
+.checkbox-effect-1:not(:checked)+label:before,
+.checkbox-effect-1:checked+label:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #5a5a5a;
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin-right: 20px;
+}
+
+.checkbox-effect-1:not(:checked)+label:after,
+.checkbox-effect-1:checked+label:after {
+    content: "\2714";
+    font-size: 11px;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 2px;
+    color: #fff;
+    transform-origin: center center;
+}
+
+.checkbox-effect-1:not(:checked)+label:after {
+    transform: scale(0);
+}
+
+.checkbox-effect-1:checked+label:before {
+    background-color: #1b998b;
+    border-color: #1b998b;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+}
+
+.checkbox-effect-1:checked+label:after {
+    transform: scale(1);
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0.2s;
+}
+
+.login_or_register {
+    text-align: center;
+    margin-top: 7rem;
+}
+
+.login_or_register>p {
+    display: inline-block;
+    margin: 0 2rem 0 2rem;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.1s ease-in-out;
+}
+
+.login_or_register>p:hover {
+    color: #90e0ef;
+    cursor: pointer;
+}
+
+/* JOBS OFFERS */
+.jobs_section {
+    width: 90%;
+    height: 100%;
+    background-color: grey;
+    margin: auto;
 }
