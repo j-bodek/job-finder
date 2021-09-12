@@ -1,5 +1,5 @@
 body {
-    background-color: aliceblue;
+    background-color: #edf6f9;
     padding: 0;
     margin: 0;
     font-family: arvo;
@@ -21,7 +21,7 @@ nav.primary-navigation {
 nav.primary-navigation ul li {
     list-style: none;
     margin: 0 auto;
-    border-left: 2px solid #3ca0e7;
+    border-left: 2px solid #90e0ef;
     display: inline-block;
     padding: 0 30px;
     position: relative;
@@ -35,7 +35,7 @@ nav.primary-navigation li a {
 }
 
 nav.primary-navigation li a:hover {
-    color: #3ca0e7;
+    color: #90e0ef;
 }
 
 nav.primary-navigation li:hover {
@@ -73,7 +73,7 @@ nav.primary-navigation ul li ul li {
 
 nav.primary-navigation ul li ul li a:hover {
     padding-left: 10px;
-    border-left: 2px solid #3ca0e7;
+    border-left: 2px solid #90e0ef;
     transition: all 0.3s ease;
 }
 
@@ -82,7 +82,7 @@ a {
 }
 
 a:hover {
-    color: #3ca0e7;
+    color: #90e0ef;
 }
 
 ul li ul li a {
@@ -97,7 +97,6 @@ ul li ul li a {
 
 .main-section {
     display: flex;
-    background-color: hotpink;
     width: 70%;
     margin: auto;
     padding: 10rem 5rem;
@@ -106,9 +105,8 @@ ul li ul li a {
 
 form {
     padding: 16px;
-    width: 320px;
+    width: 500px;
     margin: 0 auto;
-    background-color: indianred;
 }
 
 .segment {
@@ -143,8 +141,13 @@ input {
     -webkit-appearance: none;
 }
 
+input:hover {
+    background-color: #90e0ef;
+}
+
 input:focus {
     box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+    background-color: #90e0ef;
 }
 
 button {
@@ -210,7 +213,7 @@ button.red {
 }
 
 .chosen-value:hover {
-    background-color: #ff908b;
+    background-color: #90e0ef;
     cursor: pointer;
 }
 
@@ -222,7 +225,7 @@ button.red {
 .chosen-value.open {
     box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.2);
     outline: 0;
-    background-color: #ff908b;
+    background-color: #90e0ef;
     color: #000;
 }
 
@@ -262,7 +265,7 @@ button.red {
 }
 
 .value-list li:hover {
-    background-color: #ff908b;
+    background-color: #90e0ef;
 }
 
 .value-list li.closed {
@@ -285,10 +288,9 @@ button.red {
 .skill {
     display: inline-block;
     text-align: center;
-    width: 35%;
-    /* background-color: indigo; */
+    padding: 0.3rem;
     margin: 0.7rem 0 0 10%;
-    font-size: 22px;
     border: 1px solid grey;
     border-radius: 20px;
+    cursor: pointer;
 }
