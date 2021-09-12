@@ -9,29 +9,93 @@
 <body>
     <!-- Header -->
 <header class="header">
-    <div class="container">
-      <a href="#" class="header__logo">
-        <img src="#" alt="DevSearch Logo" />
-      </a>
-      <nav class="header__nav">
-        <ul class="header__menu">
-          <li class="header__menuItem">
-            <a href="#">Developers</a>
-          </li>
-          <li class="header__menuItem">
-            <a href="#">Projects</a>
-          </li>
-  
-        </ul>
-      </nav>
-    </div>
+    <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+
+    <nav role="navigation" class="primary-navigation">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Work &dtrif;</a>
+          <ul class="dropdown">
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Illustration</a></li>
+            <li><a href="#">Iconography</a></li>
+          </ul>
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
+
+  <!-- FROM  -->
+
   <div class="main-section">
+
+    <form>
+  
+        <div class="segment">
+          <h1>Check Statistics In Labor Market</h1>
+        </div>
+
+
+        
+        <input class="chosen-value" type="text" value="" placeholder="Search Industry">
+        
+        <ul class="value-list">
+            <li>Alabama</li>
+            <li>Alaska</li>
+            <li>Arizona</li>
+            <li>Arkansas</li>
+            <li>California</li>
+            <li>Colorado</li>
+            <li>Connecticut</li>
+            <li>Delaware</li>
+            <li>Florida</li>
+            <li>Georgia</li>
+            <li>Hawaii</li>
+            <li>Idaho</li>
+            <li>Illinois</li>
+            <li>Indiana</li>
+            <li>Iowa</li>
+            <li>Kansas</li>
+        </ul>
+        
+        
+
+        <label>
+            <input type="text" placeholder="Search Job Title (optional)"/>
+        </label>
+        
+
+
+        <label>
+          <input type="text" placeholder="Location (optional)"/>
+        </label>
+
+
+        <label>
+          <input type="password" placeholder="Skills (optional)"/>
+          <ul class='skills'>
+              <li class='skill'>Python &#10006;</li>
+              <li class='skill'>Django &#10006;</li>
+              <li class='skill'>Python &#10006;</li>
+              <li class='skill'>Django &#10006;</li>
+          </ul>
+        </label>
+
+
+        <button class="red" type="button"><i class="icon ion-md-lock"></i>Search</button>
+        
+        
+      </form>
+
+
       <form class = "form" action="">
           <input type="text" placeholder="Search Job Title">
           <input type="text" placeholder="Search Industry">
-          <input type="text" placeholder="Location">
+          <input type="text" placeholder="Location ">
           <p>In Range</p>
           <input type="range" placeholder="Location">
           <input type="text" placeholder="Skills">
@@ -39,4 +103,5 @@
   </div>
 
 </body>
+<script src="js/main.js"></script>
 </html>
