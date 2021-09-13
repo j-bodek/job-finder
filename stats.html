@@ -4,6 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -27,13 +28,218 @@
 
 
 
-  <div class="main-section">
+<div class="main-section-stats">
+  
+
+  <!-- EXPERIENCE CHECKBOXES -->
+  <h3>Poziom Stanowiska</h3>
+<div class = 'checkbox_stats'>
+  
+  <label>One
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Two
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Three
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Four
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+</div>
+
+<hr>
+
+<!-- AGREEMENT CHECKBOXES -->
+  <h3>Rodzaj umowy</h3>
+<div class = 'checkbox_stats'>
+  
+  <label>One
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Two
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Three
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Four
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+  <label>One
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Two
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Three
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Four
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+  <label>One
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Two
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Three
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+  <label>Two
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Three
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Four
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+  <label>One
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Two
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Three
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Four
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+  <label>One
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Two
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Three
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+
+</div>
+
+<hr>
+
+<!-- WORKING TIME CHECKBOXES -->
+  <h3>Wymiar pracy</h3>
+<div class = 'checkbox_stats'>
+  
+  <label>One
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Two
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Three
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+
+  <label>Four
+    <input style="all: revert" type="checkbox">
+    <span style="all: revert" class="checkmark"></span>
+  </label>
+</div>
 
 
 
 
-  </div>
+
+<!-- Statistics -->
+
+
+<!-- <div class="salary-container">
+  <p>Average Salary: 4000</p>
+  <p>Lowest Salary: 4000</p>
+  <p>Highest Salary: 4000</p>
+</div> -->
+
+
+<div class="chart_container">
+  <h1>Salary</h1>
+  <canvas id="myChart" class="myChart" data-type="line" width="400" height="150" ></canvas>
+</div>
+
+
+<div class="chart_container" style="width: 60%;">
+  <h1>Cities</h1>
+  <canvas id="myChart" class="myChart" data-type="pie"></canvas>
+</div>
+
+<div class="chart_container">
+  <h1>Requirement Skills</h1>
+  <canvas id="myChart" class="myChart" data-type="bar" width="400" height="150"></canvas>
+</div>
+
+<div class="chart_container">
+  <h1>Nice to have Skills</h1>
+  <canvas id="myChart" class="myChart" data-type="bar" width="400" height="150"></canvas>
+</div>
+
+<div class="chart_container">
+  <h1>Benefits</h1>
+  <canvas id="myChart" class="myChart" data-type="bar" width="400" height="150"></canvas>
+</div>
+
+
+
+
+
+</div>
 
 </body>
 <script src="js/main.js"></script>
+<script src="js/charts.js"></script>
+
 </html>

@@ -537,3 +537,42 @@ body .card .description a:hover {
     color: green;
 
 }
+
+
+/* Stats */
+
+.main-section-stats {
+    width: 90%;
+    margin: 5rem auto;
+    text-align: center;
+    align-items: center;
+}
+
+.checkbox_stats {
+    margin-top: 2rem;
+    width: 100%;
+    font-size: 18px;
+}
+
+
+.checkbox_stats>label {
+    display: inline-block;
+    width: auto;
+    padding: 0 1rem;
+}
+
+.chart_container {
+    padding-top: 6rem;
+    margin: auto;
+}
+
+.salary-container {
+    width: 100%;
+    margin-top: 10rem;
+}
+
+.salary-container>p {
+    font-size: 2rem;
+    font-weight: bold;
+    display: inline-block;
+}
