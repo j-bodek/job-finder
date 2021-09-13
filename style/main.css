@@ -365,15 +365,16 @@ button.red {
     margin-top: 7rem;
 }
 
-.login_or_register>p {
+.login_or_register>a {
     display: inline-block;
     margin: 0 2rem 0 2rem;
     font-size: 20px;
     font-weight: bold;
     transition: 0.1s ease-in-out;
+    color: #61677c;
 }
 
-.login_or_register>p:hover {
+.login_or_register>a:hover {
     color: #90e0ef;
     cursor: pointer;
 }
