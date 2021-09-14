@@ -1,8 +1,8 @@
 import requests
 import numpy as np
 
-job_offers = requests.get('https://justjoin.it/api/offers')
-job_offers = job_offers.json()
+# job_offers = requests.get('https://justjoin.it/api/offers')
+# job_offers = job_offers.json()
 
 
 categories = {
@@ -15,8 +15,10 @@ categories = {
 }
 
 
-title = 'security expert'
-print(title.__contains__('sec'))
+title = 'Ml expert'
+
+
+any(key in title.lower() for key in categories['Machine Learning'])
 
 
 
@@ -32,7 +34,7 @@ print(title.__contains__('sec'))
 
 # GET INFO ABOUT OFFERS
 
-def filter_offer_info(job_offers):
+def filter_offer_info(job_offers, category, keyword, location):
     salaries = set()
     max_salary = 0
     min_salary = 100000
@@ -51,8 +53,18 @@ def filter_offer_info(job_offers):
     for job in job_offers:
         
         title = job['title']
+        if not any(key in title.lower() for key in categories['Backend']):
+            continue
+
+        if not title.lower().__contains__('keyword'):
+            continue
+
         
         city = job['city']
+        if city != location:
+            continue
+
+
         cities.append(city)
 
         company_size = job['company_size']
@@ -76,13 +88,13 @@ def filter_offer_info(job_offers):
             except:
                 None
 
-    print(employments_types, experience)
+    
 
     return salaries, max_salary, min_salary, cities, required_skills, nice_to_have_skills, company_size_list 
 
 
 
-
+# filter_offer_info(job_offers, 'category', 'keyword', 'location')
 
 
 
@@ -156,5 +168,7 @@ def return_display_info(job_offers):
     return salary_range_amount, salary_ranges, most_common_cities, most_common_req_skills, most_common_nice_skills, most_common_company_size
 
 
-# return_display_info(job_offers)
+
+
+
 
