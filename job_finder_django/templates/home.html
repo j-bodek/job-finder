@@ -10,15 +10,17 @@
 
   <div class="main-section">
 
-    <form>
+    <form method="POST">
+      {% csrf_token %}
   
         <div class="segment">
           <h1>Check Statistics In Labor Market</h1>
         </div>
 
+          
 
         <label>
-          <input class="chosen-value" type="text" value="" placeholder="Search Category">
+          {{form.category}}
           <ul class="value-list">
               <li>Frontend</li>
               <li>Backend</li>
@@ -31,18 +33,18 @@
         
 
         <label>
-            <input type="text" placeholder="Search Job Title (optional)"/>
+          {{form.job_title}}
         </label>
         
 
 
         <label>
-          <input type="text" placeholder="Location (optional)"/>
+          {{form.location}}
         </label>
 
 
 
-        <a href="{% url 'display_stats' %}"><button class="red" type="button"><i class="icon ion-md-lock"></i>Search</button></a>
+        <button class="red" type="submit"><i class="icon ion-md-lock"></i>Search</button>
         
         
       </form>
