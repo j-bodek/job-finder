@@ -1,0 +1,70 @@
+{% extends 'main.html' %} 
+
+{% block content %}
+
+
+  <!-- FROM  -->
+    <div class="login_or_register">
+      <a href="{% url 'home' %}" class='form_active'>Check Statistics</a>
+      <a href="{% url 'find_job' %}" >Find job for you</a>
+    </div>
+
+  <div class="main-section">
+
+
+
+    <form>
+  
+        <div class="segment">
+          <h1>Find your job</h1>
+        </div>
+
+
+        <label>
+        <input class="chosen-value" type="text" value="" placeholder="Search Industry">
+        <ul class="value-list">
+            <li class='dropdown_items'>Alabama</li>
+            <li class='dropdown_items'>Alaska</li>
+            <li class='dropdown_items'>Arizona</li>
+            <li class='dropdown_items'>Arkansas</li>
+            <li class='dropdown_items'>California</li>
+            <li class='dropdown_items'>Colorado</li>
+            <li class='dropdown_items'>Connecticut</li>
+        </ul>
+    </label>
+
+
+        <label>
+          <input type="text" placeholder="Location (optional)"/>
+        </label>
+
+
+        <label>
+          <input id="skill_bar" class="chosen-value" type="text" placeholder="Skills"/>
+
+            <!-- Display skills list -->
+            <ul class="value-list">
+                <li class='dropdown_items'>Alabama</li>
+                <li class='dropdown_items'>Alaska</li>
+                <li class='dropdown_items'>Arizona</li>
+                <li class='dropdown_items'>Arkansas</li>
+                <li class='dropdown_items'>California</li>
+                <li class='dropdown_items'>Colorado</li>
+                <li class='dropdown_items'>Connecticut</li>
+            </ul>
+
+            <!-- Display choosen skills -->
+            <ul id="skills" class='skills'>
+            </ul>
+        </label>
+
+
+        <a href="{% url 'display_stats' %}"><button class="red" type="button"><i class="icon ion-md-lock"></i>Search</button></a>
+        
+        
+      </form>
+
+
+  </div>
+
+{% endblock content %}
