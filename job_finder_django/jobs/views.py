@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import requests
+# import requests
 
 from .forms import jobStatsForm
+from .jobs_filter import job_request, filter_offer_info, return_display_info
+from .jobs_categories import categories
 
 
 # Create your views here.
@@ -26,10 +29,19 @@ def home(request):
 def find_job(request):
     return render(request, 'find_job.html')
 
+
 def display_stats(request):
     form_values = request.session.get('web_input')
 
-    return render(request, 'stats.html')
+    data = job_request('https://justjoin.it/api/offers')
+
+    filtered_data = filter_offer_info(data, categories, form_values['category'], form_values['job_title'], form_values['location'])
+    
+    display_info = return_display_info(filtered_data)
+
+    context = {'data':display_info}
+
+    return render(request, 'stats.html', context)
 
 
 

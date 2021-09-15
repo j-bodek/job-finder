@@ -63,28 +63,28 @@
 
 <div class="chart_container">
   <h1>Salary</h1>
-  <canvas id="myChart" class="myChart" data-type="line" width="400" height="150" ></canvas>
+  <canvas id="myChart" class="myChart" data-type="line" data-data='salary' width="400" height="150" ></canvas>
 </div>
 
 
 <div class="chart_container" style="width: 60%;">
   <h1>Cities</h1>
-  <canvas id="myChart" class="myChart" data-type="pie"></canvas>
+  <canvas id="myChart" class="myChart" data-type="pie" data-data='most_common_cities'></canvas>
 </div>
 
 <div class="chart_container">
   <h1>Requirement Skills</h1>
-  <canvas id="myChart" class="myChart" data-type="bar" width="400" height="150"></canvas>
+  <canvas id="myChart" class="myChart" data-type="bar" data-data='most_common_req_skills' width="400" height="150"></canvas>
 </div>
 
 <div class="chart_container">
   <h1>Nice to have Skills</h1>
-  <canvas id="myChart" class="myChart" data-type="bar" width="400" height="150"></canvas>
+  <canvas id="myChart" class="myChart" data-type="bar" data-data='most_common_nice_skills' width="400" height="150"></canvas>
 </div>
 
 <div class="chart_container">
   <h1>Company Size</h1>
-  <canvas id="myChart" class="myChart" data-type="bar" width="400" height="150"></canvas>
+  <canvas id="myChart" class="myChart" data-type="bar" data-data='most_common_company_size' width="400" height="150"></canvas>
 </div>
 
 
@@ -96,6 +96,12 @@
 {% endblock content %}
 
 {% block js %}
+
+<script type="text/javascript">
+  let received_data  = "{{data|safe}}";
+  received_data = JSON.parse(received_data.replaceAll("'", '"'));
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
 <script src="{% static 'js/charts.js' %}"></script>
 {% endblock js %}

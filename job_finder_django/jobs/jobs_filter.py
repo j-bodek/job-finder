@@ -1,24 +1,12 @@
 import requests
 import numpy as np
 
-# job_offers = requests.get('https://justjoin.it/api/offers')
-# job_offers = job_offers.json()
 
+def job_request(url):
+    job_offers = requests.get(url)
+    job_offers = job_offers.json()
+    return job_offers
 
-categories = {
-    'Frontend':['front'],
-    'Backend':['backend'],
-    'Full Stack':['fullstack','full stack'],
-    'Machine Learning':['machine learning','ml','deep learning', 'ai'],
-    'Data':['data'],
-    'Moblie':['mobile','ios','android'],
-}
-
-
-title = 'Ml expert'
-
-
-any(key in title.lower() for key in categories['Machine Learning'])
 
 
 
@@ -34,7 +22,7 @@ any(key in title.lower() for key in categories['Machine Learning'])
 
 # GET INFO ABOUT OFFERS
 
-def filter_offer_info(job_offers, category, keyword, location):
+def filter_offer_info(job_offers, categories, category, keyword, location):
     salaries = set()
     max_salary = 0
     min_salary = 100000
@@ -53,15 +41,15 @@ def filter_offer_info(job_offers, category, keyword, location):
     for job in job_offers:
         
         title = job['title']
-        if not any(key in title.lower() for key in categories['Backend']):
+        if category != 'All' and not any(key in title.lower() for key in categories[category]):
             continue
 
-        if not title.lower().__contains__('keyword'):
+        if not title.lower().__contains__(keyword):
             continue
 
         
         city = job['city']
-        if city != location:
+        if location != '' and city != location:
             continue
 
 
@@ -113,7 +101,8 @@ def most_common_in_list(lst, outputs_num):
         except:
             break
     
-    return [most_common, amounts]
+    return {'labels' : most_common, 
+            'data': amounts}
 
 
 
@@ -144,7 +133,7 @@ def salary_range(salary_ranges, start_salary, end_salary):
 
 
 def return_display_info(job_offers):
-    salaries, max_salary, min_salary, cities, required_skills, nice_to_have_skills, company_size_list = filter_offer_info(job_offers)
+    salaries, max_salary, min_salary, cities, required_skills, nice_to_have_skills, company_size_list = job_offers
 
     salary_ranges = []
     step = ((max_salary - min_salary) / 100)
@@ -165,7 +154,14 @@ def return_display_info(job_offers):
     most_common_nice_skills = most_common_in_list(nice_to_have_skills, 10)
     most_common_company_size = most_common_in_list(company_size_list, 10)
 
-    return salary_range_amount, salary_ranges, most_common_cities, most_common_req_skills, most_common_nice_skills, most_common_company_size
+    return {"salary":{
+            'labels':salary_ranges,
+            'data': salary_range_amount
+            }, 
+            "most_common_cities":most_common_cities, 
+            "most_common_req_skills":most_common_req_skills, 
+            "most_common_company_size":most_common_company_size,
+            "most_common_nice_skills":most_common_nice_skills} 
 
 
 
