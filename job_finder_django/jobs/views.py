@@ -19,6 +19,7 @@ def home(request):
 
             #pass form data to display_stats function
             request.session['web_input'] = form.cleaned_data
+            print(form.cleaned_data)
             return redirect('display_stats')
 
 
@@ -35,11 +36,11 @@ def display_stats(request):
 
     data = job_request('https://justjoin.it/api/offers')
 
-    filtered_data = filter_offer_info(data, categories, form_values['category'], form_values['job_title'], form_values['location'])
+    filtered_data = filter_offer_info(data, categories, form_values)
     
     display_info = return_display_info(filtered_data)
 
-    context = {'data':display_info}
+    context = {'data':display_info, 'offers_number':sum(display_info['most_common_cities']['data'])}
 
     return render(request, 'stats.html', context)
 

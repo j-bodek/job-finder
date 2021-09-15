@@ -15,7 +15,7 @@ let displayChart = (chart, received_data) => {
             data: {
                 labels: received_data[datas].labels,
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Number of offers',
                     data: received_data[datas].data,
                     backgroundColor: [
                         'rgba(249, 65, 68, 0.7)',
@@ -61,7 +61,7 @@ let displayChart = (chart, received_data) => {
             data: {
                 labels: received_data[datas].labels,
                 datasets: [{
-                    label: 'My First Dataset',
+                    label: 'Number of offers',
                     data: received_data[datas].data,
                     backgroundColor: [
                         'rgb(249, 65, 68, 0.7)',
@@ -85,7 +85,7 @@ let displayChart = (chart, received_data) => {
             data: {
                 labels: received_data[datas].labels,
                 datasets: [{
-                    label: 'Number of offerts',
+                    label: 'Number of offers',
                     data: received_data[datas].data,
                     backgroundColor: 'rgba(249, 65, 68, 0.7)',
                     borderColor: 'rgba(249, 65, 68, 1)',

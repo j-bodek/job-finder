@@ -4,8 +4,8 @@
 
   <!-- FROM  -->
   <div class="login_or_register">
-    <a href="{% url 'home' %}" class='form_active'>Check Statistics</a>
-    <a href="{% url 'find_job' %}" >Find job for you</a>
+    <a href="{% url 'home' %}" class='form_active'>Check IT</a>
+    <a href="{% url 'find_job' %}" >Find IT Job</a>
   </div>
 
   <div class="main-section">
@@ -14,7 +14,7 @@
       {% csrf_token %}
   
         <div class="segment">
-          <h1>Check Statistics In Labor Market</h1>
+          <h1>Check IT</h1>
         </div>
 
           
@@ -47,17 +47,17 @@
     <div class = 'checkbox_stats'>
       
       <label>junior
-        <input style="all: revert" type="checkbox">
+        {{form.junior}}
         <span style="all: revert" class="checkmark"></span>
       </label>
     
       <label>mid
-        <input style="all: revert" type="checkbox">
+        {{form.mid}}
         <span style="all: revert" class="checkmark"></span>
       </label>
     
       <label>senior
-        <input style="all: revert" type="checkbox">
+        {{form.senior}}
         <span style="all: revert" class="checkmark"></span>
       </label>
     </div>
@@ -68,17 +68,17 @@
     <div class = 'checkbox_stats'>
       
       <label>permanent
-        <input style="all: revert" type="checkbox">
+        {{form.permanent}}
         <span style="all: revert" class="checkmark"></span>
       </label>
     
       <label>b2b
-        <input style="all: revert" type="checkbox">
+        {{form.b2b}}
         <span style="all: revert" class="checkmark"></span>
       </label>
     
       <label>mandate_contract
-        <input style="all: revert" type="checkbox">
+        {{form.mandate_contract}}
         <span style="all: revert" class="checkmark"></span>
       </label>
     

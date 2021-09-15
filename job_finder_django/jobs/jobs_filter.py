@@ -22,10 +22,11 @@ def job_request(url):
 
 # GET INFO ABOUT OFFERS
 
-def filter_offer_info(job_offers, categories, category, keyword, location):
+def filter_offer_info(job_offers, categories, form_data):
     salaries = set()
     max_salary = 0
     min_salary = 100000
+    
 
     cities = []
 
@@ -40,34 +41,44 @@ def filter_offer_info(job_offers, categories, category, keyword, location):
 
     for job in job_offers:
         
+
+        # FILTER PROCESS    
         title = job['title']
-        if category != 'All' and not any(key in title.lower() for key in categories[category]):
+        if form_data['category'] != 'All' and not any(key in title.lower() for key in categories[form_data['category']]):
             continue
 
-        if not title.lower().__contains__(keyword):
+        if not title.lower().__contains__(form_data['job_title']):
             continue
 
         
         city = job['city']
-        if location != '' and city != location:
+        if form_data['location'] != '' and city != form_data['location']:
             continue
 
+        level = job['experience_level']
+        if not form_data[level]:
+            continue
 
+        employment_types = job['employment_types']
+        for e in employment_types:
+            if not form_data[e['type']]:
+                continue
+
+
+
+        # GET DATA
         cities.append(city)
 
         company_size = job['company_size']
         company_size_list.append(company_size)
 
-        level = job['experience_level']
-        experience.add(level)
         
         skills = job['skills']
         for skill in skills:
             nice_to_have_skills.append(skill['name']) if int(skill['level']) == 1 else required_skills.append(skill['name'])
 
-        employment_types = job['employment_types']
         for e in employment_types:
-            employments_types.add(e['type'])
+
             try:
                 min_salary = int(e['salary']['from']) if int(e['salary']['from']) < min_salary else min_salary
                 max_salary = int(e['salary']['to']) if int(e['salary']['to']) > max_salary else max_salary
