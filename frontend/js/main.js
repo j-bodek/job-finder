@@ -1,164 +1,160 @@
+// // SEARCH
+
+// const inputField = document.querySelector('.chosen-value');
+// const dropdown = document.querySelector('.value-list');
+// const dropdownArray = [...document.querySelectorAll('li')];
+
+// let valueArray = [];
+// dropdownArray.forEach(item => {
+//     valueArray.push(item.textContent);
+// });
+
+// const closeDropdown = () => {
+//     dropdown.classList.remove('open');
+// }
+
+// inputField.addEventListener('input', () => {
+//     dropdown.classList.add('open');
+//     let inputValue = inputField.value.toLowerCase();
+//     let valueSubstring;
+//     if (inputValue.length > 0) {
+//         for (let j = 0; j < valueArray.length; j++) {
+//             if (!(inputValue.substring(0, inputValue.length) === valueArray[j].substring(0, inputValue.length).toLowerCase())) {
+//                 dropdownArray[j].classList.add('closed');
+//             } else {
+//                 dropdownArray[j].classList.remove('closed');
+//             }
+//         }
+//     } else {
+//         for (let i = 0; i < dropdownArray.length; i++) {
+//             dropdownArray[i].classList.remove('closed');
+//         }
+//     }
+// });
+
+// dropdownArray.forEach(item => {
+//     item.addEventListener('click', (evt) => {
+//         inputField.value = item.textContent;
+//         dropdownArray.forEach(dropdown => {
+//             dropdown.classList.add('closed');
+//         });
+//     });
+// })
+
+// inputField.addEventListener('focus', () => {
+//     inputField.placeholder = 'Type to filter';
+//     dropdown.classList.add('open');
+//     dropdownArray.forEach(dropdown => {
+//         dropdown.classList.remove('closed');
+//     });
+// });
+
+// inputField.addEventListener('blur', () => {
+//     inputField.placeholder = 'Select state';
+//     dropdown.classList.remove('open');
+// });
+
+// document.addEventListener('click', (evt) => {
+//     const isDropdown = dropdown.contains(evt.target);
+//     const isInput = inputField.contains(evt.target);
+//     if (!isDropdown && !isInput) {
+//         dropdown.classList.remove('open');
+//     }
+// });
+
 // SEARCH
 
-const inputField = document.querySelector('.chosen-value');
-const dropdown = document.querySelector('.value-list');
-const dropdownArray = [...document.querySelectorAll('li')];
+const inputField = document.querySelectorAll('.chosen-value');
+const dropdown = document.querySelectorAll('.value-list');
+// const dropdownArray = [...document.querySelectorAll('li')];
 
-let valueArray = [];
-dropdownArray.forEach(item => {
-    valueArray.push(item.textContent);
-});
 
-const closeDropdown = () => {
-    dropdown.classList.remove('open');
+let returnValueArray = (dropdownArray) => {
+    let valueArray = [];
+    dropdownArray.forEach(item => {
+        valueArray.push(item.textContent);
+    });
+    return valueArray
 }
 
-inputField.addEventListener('input', () => {
-    dropdown.classList.add('open');
-    let inputValue = inputField.value.toLowerCase();
-    let valueSubstring;
-    if (inputValue.length > 0) {
-        for (let j = 0; j < valueArray.length; j++) {
-            if (!(inputValue.substring(0, inputValue.length) === valueArray[j].substring(0, inputValue.length).toLowerCase())) {
-                dropdownArray[j].classList.add('closed');
-            } else {
-                dropdownArray[j].classList.remove('closed');
+
+const closeDropdown = () => {
+    dropdown.classList.add('closed');
+}
+
+
+inputField.forEach(input => {
+    input.addEventListener('input', () => {
+        let label = input.closest("label");
+        let dropdown = label.querySelector('.value-list')
+
+        let dropdownArray = label.querySelectorAll('.dropdown_items')
+        let valueArray = returnValueArray(dropdownArray)
+
+        dropdown.classList.add('open');
+        let inputValue = inputField.value.toLowerCase();
+        let valueSubstring;
+        if (inputValue.length > 0) {
+            for (let j = 0; j < valueArray.length; j++) {
+                if (!(inputValue.substring(0, inputValue.length) === valueArray[j].substring(0, inputValue.length).toLowerCase())) {
+                    dropdownArray[j].classList.add('closed');
+                } else {
+                    dropdownArray[j].classList.remove('closed');
+                }
+            }
+        } else {
+            for (let i = 0; i < dropdownArray.length; i++) {
+                dropdownArray[i].classList.remove('closed');
             }
         }
-    } else {
-        for (let i = 0; i < dropdownArray.length; i++) {
-            dropdownArray[i].classList.remove('closed');
-        }
-    }
-});
-
-dropdownArray.forEach(item => {
-    item.addEventListener('click', (evt) => {
-        inputField.value = item.textContent;
-        dropdownArray.forEach(dropdown => {
-            dropdown.classList.add('closed');
-        });
     });
 })
 
-inputField.addEventListener('focus', () => {
-    inputField.placeholder = 'Type to filter';
-    dropdown.classList.add('open');
-    dropdownArray.forEach(dropdown => {
-        dropdown.classList.remove('closed');
+
+
+inputField.forEach(input => {
+    input.addEventListener('click', (e) => {
+        let label = input.closest("label");
+        let dropdown = label.querySelector('.value-list')
+        inputField.placeholder = 'Type to filter';
+        dropdown.classList.add('open');
+        let dropdownArray = label.querySelectorAll('.dropdown_items')
+        dropdownArray.forEach(dropdown => {
+            dropdown.classList.remove('closed');
+        });
+
+
     });
-});
+})
 
-inputField.addEventListener('blur', () => {
-    inputField.placeholder = 'Select state';
-    dropdown.classList.remove('open');
-});
 
-document.addEventListener('click', (evt) => {
-    const isDropdown = dropdown.contains(evt.target);
-    const isInput = inputField.contains(evt.target);
-    if (!isDropdown && !isInput) {
+
+
+dropdown.forEach(list => {
+    list.addEventListener('click', (e) => {
+        let input = list.closest("label").querySelector('.chosen-value');
+        displayChoosenValue(e.target, input)
+    })
+})
+
+
+
+let displayChoosenValue = (item, input) => {
+
+    input.value = item.textContent;
+
+}
+
+
+
+inputField.forEach(input => {
+    input.addEventListener('blur', () => {
+        inputField.placeholder = 'Search Industry';
+        let label = input.closest("label");
+        let dropdown = label.querySelector('.value-list')
         dropdown.classList.remove('open');
-    }
-});
-
-// // SEARCH
-
-// const inputField = document.querySelectorAll('.chosen-value');
-// const dropdown = document.querySelectorAll('.value-list');
-// // const dropdownArray = [...document.querySelectorAll('li')];
-
-
-// let returnValueArray = (dropdownArray) => {
-//     let valueArray = [];
-//     dropdownArray.forEach(item => {
-//         valueArray.push(item.textContent);
-//     });
-//     return valueArray
-// }
-
-
-// const closeDropdown = () => {
-//     dropdown.classList.add('closed');
-// }
-
-
-// inputField.forEach(input => {
-//     input.addEventListener('input', () => {
-//         let label = input.closest("label");
-//         let dropdown = label.querySelector('.value-list')
-
-//         let dropdownArray = label.querySelectorAll('.dropdown_items')
-//         let valueArray = returnValueArray(dropdownArray)
-
-//         dropdown.classList.add('open');
-//         let inputValue = inputField.value.toLowerCase();
-//         let valueSubstring;
-//         if (inputValue.length > 0) {
-//             for (let j = 0; j < valueArray.length; j++) {
-//                 if (!(inputValue.substring(0, inputValue.length) === valueArray[j].substring(0, inputValue.length).toLowerCase())) {
-//                     dropdownArray[j].classList.add('closed');
-//                 } else {
-//                     dropdownArray[j].classList.remove('closed');
-//                 }
-//             }
-//         } else {
-//             for (let i = 0; i < dropdownArray.length; i++) {
-//                 dropdownArray[i].classList.remove('closed');
-//             }
-//         }
-//     });
-// })
-
-
-
-// inputField.forEach(input => {
-//     input.addEventListener('click', (e) => {
-//         let label = input.closest("label");
-//         let dropdown = label.querySelector('.value-list')
-//         inputField.placeholder = 'Type to filter';
-//         dropdown.classList.add('open');
-//         let dropdownArray = label.querySelectorAll('.dropdown_items')
-//         dropdownArray.forEach(dropdown => {
-//             dropdown.classList.remove('closed');
-//         });
-
-
-//     });
-// })
-
-
-
-
-// dropdown.forEach(list => {
-//     list.addEventListener('click', (e) => {
-//         let input = list.closest("label").querySelector('.chosen-value');
-//         displayChoosenValue(e.target, input)
-//     })
-// })
-
-
-
-// let displayChoosenValue = (item, input) => {
-//     if (input.id !== 'skill_bar') {
-//         input.value = item.textContent;
-//     } else {
-//         input.value = item.textContent;
-//         appendSkill(input)
-//         input.value = '';
-//     }
-// }
-
-
-
-// inputField.forEach(input => {
-//     input.addEventListener('blur', () => {
-//         inputField.placeholder = 'Search Industry';
-//         let label = input.closest("label");
-//         let dropdown = label.querySelector('.value-list')
-//         dropdown.classList.remove('open');
-//     });
-// })
+    });
+})
 
 
 

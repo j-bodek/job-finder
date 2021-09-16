@@ -283,11 +283,12 @@ button.red {
     /* background-color: bisque; */
 }
 
-.skill_input {
+#skill_bar {
     display: inline-block;
     width: 70%;
     margin: 0;
 }
+
 
 .skill_level_input {
     display: inline-block;
