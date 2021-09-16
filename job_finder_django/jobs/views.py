@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import requests
 # import requests
 
-from .forms import jobStatsForm
+from .forms import jobStatsForm, jobFindForm
 from .jobs_filter import job_request, filter_offer_info, return_display_info
 from .jobs_categories import categories
 from .job_skills import all_skills
@@ -29,8 +29,22 @@ def home(request):
 
 def find_job(request):
 
+    form = jobFindForm()
+
+    if request.method == 'POST':
+        form = jobFindForm(request.POST)
+        
+        if form.is_valid():
+            formData = form.cleaned_data
+            print(formData)
+            print(request.POST.getlist('mylist[]'))
+            #pass form data to display_stats function
+            #request.session['web_input'] = form.cleaned_data
+            
+
+
     all_skills.sort()
-    context = {'skills':all_skills}
+    context = {'skills':all_skills, 'form':form}
 
     return render(request, 'find_job.html', context)
 

@@ -13,7 +13,10 @@
 
 
 
-    <form>
+    <form method='POST'>
+      {% csrf_token %}
+      <!-- prevent submiting form after hiting enter -->
+      <button type="submit" disabled style="display: none" aria-hidden="true"></button>
   
         <div class="segment">
           <h1>Find IT Job</h1>
@@ -21,7 +24,7 @@
 
 
         <label>
-        <input class="chosen-value" type="text" value="" placeholder="Search Category">
+        {{form.category}}
         <ul class="value-list">
           <li>All</li>
           <li>Frontend</li>
@@ -30,17 +33,17 @@
           <li>Machine Learning</li>
           <li>Data</li>
       </ul>
-    </label>
+    </label> 
 
 
         <label>
-          <input type="text" placeholder="Location (optional)"/>
+          {{form.location}}
         </label>
 
 
         <label class = "skill_box">
-          <input id="skill_bar" class="chosen-value" type="text" placeholder="Skill"/>
-          <input id="skill_bar_level" class="skill_level_input" type="number" min="1" max="5" placeholder="Skill Level"/>
+          <input id="skill_bar" class="chosen-value" type="text" placeholder="Skill" autocomplete="off"/>
+          <input id="skill_bar_level" class="skill_level_input" type="number" min="1" max="5" placeholder="Skill Level" autocomplete="off"/>
           <ul class="value-list">
             {% for skill in skills %}
             <li class='dropdown_items'>{{skill}}</li>
@@ -54,7 +57,7 @@
         </label>
 
 
-        <a href="{% url 'display_stats' %}"><button class="red" type="button"><i class="icon ion-md-lock"></i>Search</button></a>
+        <button class="red" type="submit"><i class="icon ion-md-lock"></i>Search</button>
         
         
       </form>

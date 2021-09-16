@@ -12,3 +12,11 @@ class jobStatsForm(forms.Form): #Note that it is not inheriting from forms.Model
     permanent = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'style':"all: revert", 'type':"checkbox"}))
     b2b  = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'style':"all: revert", 'type':"checkbox"}))
     mandate_contract = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'style':"all: revert", 'type':"checkbox"}))
+
+
+
+class jobFindForm(forms.Form): #Note that it is not inheriting from forms.ModelForm
+    category = forms.CharField(widget=forms.TextInput(attrs={'class':'chosen-value', 'placeholder':'Search Category', 'autocomplete':'off'}))
+    location = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder':'Location (optional)', 'autocomplete':'off'}))
+    
+

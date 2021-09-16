@@ -65,7 +65,7 @@
 // SEARCH
 
 const inputField = document.querySelectorAll('.chosen-value');
-const dropdown = document.querySelectorAll('.value-list');
+const dropdowns = document.querySelectorAll('.value-list');
 // const dropdownArray = [...document.querySelectorAll('li')];
 
 
@@ -114,11 +114,11 @@ inputField.forEach(input => {
 
 inputField.forEach(input => {
     input.addEventListener('click', (e) => {
-        let label = input.closest("label");
-        let dropdown = label.querySelector('.value-list')
+        label = input.closest("label");
+        dropdown = label.querySelector('.value-list')
         inputField.placeholder = 'Type to filter';
         dropdown.classList.add('open');
-        let dropdownArray = label.querySelectorAll('li')
+        dropdownArray = label.querySelectorAll('li')
         dropdownArray.forEach(dropdown => {
             dropdown.classList.remove('closed');
         });
@@ -130,7 +130,7 @@ inputField.forEach(input => {
 
 
 
-dropdown.forEach(list => {
+dropdowns.forEach(list => {
     list.addEventListener('click', (e) => {
         let input = list.closest("label").querySelector('.chosen-value');
         displayChoosenValue(e.target, input)
@@ -146,18 +146,32 @@ let displayChoosenValue = (item, input) => {
 }
 
 
+// inputField.forEach(input => {
+//     input.addEventListener('focus', () => {
+//         input.placeholder = 'Type to filter';
+//         dropdown.classList.add('open');
+//         dropdownArray.forEach(dropdown => {
+//             dropdown.classList.remove('closed');
+//         });
+//     });
+// })
 
-inputField.forEach(input => {
-    input.addEventListener('blur', () => {
-        inputField.placeholder = 'Search Industry';
-        let label = input.closest("label");
-        let dropdown = label.querySelector('.value-list')
+// inputField.forEach(input => {
+//     input.addEventListener('blur', () => {
+//         console.log('blur');
+//         inputField.placeholder = 'Search Industry';
+//         let label = input.closest("label");
+//         let dropdown = label.querySelector('.value-list')
+//         dropdown.classList.remove('open');
+//     });
+// })
+
+
+document.addEventListener('click', (evt) => {
+    if (evt.target.className !== 'chosen-value' && evt.target.className !== 'value-list') {
         dropdown.classList.remove('open');
-    });
-})
-
-
-
+    }
+});
 
 
 
@@ -189,6 +203,13 @@ let appendSkill = (skill_bar) => {
     new_skill.setAttribute("class", 'skill');
     new_skill.setAttribute('title', "Click to delete");
     new_skill.innerHTML = `Skill: ${skill_bar.value}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; level: ${skill_bar_level.value}`
+
+    let input = document.createElement("input");
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('name', 'mylist[]');
+    input.setAttribute('value', `${skill_bar.value} ${skill_bar_level.value}`);
+    new_skill.appendChild(input)
+
     skills_list.appendChild(new_skill)
     skill_bar.value = ''
     skill_bar_level.value = ''
