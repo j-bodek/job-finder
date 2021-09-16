@@ -88,11 +88,11 @@ inputField.forEach(input => {
         let label = input.closest("label");
         let dropdown = label.querySelector('.value-list')
 
-        let dropdownArray = label.querySelectorAll('.dropdown_items')
+        let dropdownArray = label.querySelectorAll('li')
         let valueArray = returnValueArray(dropdownArray)
 
         dropdown.classList.add('open');
-        let inputValue = inputField.value.toLowerCase();
+        let inputValue = input.value.toLowerCase();
         let valueSubstring;
         if (inputValue.length > 0) {
             for (let j = 0; j < valueArray.length; j++) {
@@ -118,7 +118,7 @@ inputField.forEach(input => {
         let dropdown = label.querySelector('.value-list')
         inputField.placeholder = 'Type to filter';
         dropdown.classList.add('open');
-        let dropdownArray = label.querySelectorAll('.dropdown_items')
+        let dropdownArray = label.querySelectorAll('li')
         dropdownArray.forEach(dropdown => {
             dropdown.classList.remove('closed');
         });

@@ -253,11 +253,10 @@ button.red {
 
 .value-list li {
     position: relative;
+    height: 4rem;
     background-color: #fafcfd;
-    padding: 0.5rem;
+    padding: 1rem;
     font-size: 1.1rem;
-    margin-top: 0.1rem;
-    border-radius: 20px;
     display: flex;
     align-items: center;
     cursor: pointer;
