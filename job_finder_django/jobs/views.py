@@ -19,7 +19,6 @@ def home(request):
 
             #pass form data to display_stats function
             request.session['web_input'] = form.cleaned_data
-            print(form.cleaned_data)
             return redirect('display_stats')
 
 
