@@ -5,6 +5,21 @@
 
   <div class="jobs_section">
 
+    <!-- Display if not any offer -->
+    {% if not offers and user_skills_list %}
+      <h2>Sorry we couldn't find any job offer for:</h2>
+      <p>Category: {{form_values.category}}</p>
+      <p>Location: {{form_values.location}}</p>
+
+      <p>Skills:</p>
+      {% for skill in user_skills_list %} 
+        <p>{{skill}}</p>
+      {% endfor %}
+    {% endif %}
+
+
+
+    <!-- Display if any offers -->
     {% for offer in offers %}
       <div class="card">
           <nav>
@@ -15,7 +30,7 @@
           </div>
           <div class="description">
             <h2>{{offer.name}}</h2>
-            <h4>{{offer.location}}</h4>
+            <h4>{{offer.city}}</h4>
 
             {% for emp_type in offer.salary %} 
             <h1>{% if emp_type.salary != None %} {{emp_type.type}} : {{emp_type.salary.from}} - {{emp_type.salary.to}} {{emp_type.salary.currency}} {% endif %}</h1>
@@ -32,23 +47,6 @@
       {% endfor %}
 
 
-
-      <div class="pagination">
-        <ul class="container">
-          <li><a href="#" class="btn btn--disabled">&#10094; Prev</a></li>
-          <li><a href="#" class="btn btn--sub">01</a></li>
-          <li><a href="#" class="btn">02</a></li>
-          <li><a href="#" class="btn">03</a></li>
-          <li><a href="#" class="btn">04</a></li>
-          <li><a href="#" class="btn">05</a></li>
-          <li><a href="#" class="btn">06</a></li>
-          <li><a href="#" class="btn">07</a></li>
-          <li><a href="#" class="btn">08</a></li>
-          <li><a href="#" class="btn">09</a></li>
-          <li><a href="#" class="btn">10</a></li>
-          <li><a href="#" class="btn">Next &#10095;</a></li>
-        </ul>
-      </div>
 
   </div>
 

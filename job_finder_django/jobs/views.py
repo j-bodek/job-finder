@@ -74,14 +74,15 @@ def personalized_offers(request):
     user_skills_list = request.session.get('skills_list')
     user_skills_dic = create_user_skills_dic(user_skills_list)
 
+    #request
     data = job_request('https://justjoin.it/api/offers')
 
-    sorted_offers = sort_all_offers(data, 4, user_skills_dic)
+    sorted_offers = sort_all_offers(data, 30, user_skills_dic, form_values)
     
     personalized_offers = get_best_offers_and_info(sorted_offers, user_skills_dic)
-    # print(personalized_offers)
+
     
-    context = {'offers':personalized_offers}
+    context = {'offers':personalized_offers, 'form_values':form_values, 'user_skills_list':user_skills_list}
     
     
 

@@ -207,7 +207,7 @@ let appendSkill = (skill_bar) => {
     let input = document.createElement("input");
     input.setAttribute('type', 'hidden');
     input.setAttribute('name', 'user_skills_list[]');
-    input.setAttribute('value', `${skill_bar.value}--${skill_bar_level.value}`);
+    input.setAttribute('value', `${skill_bar.value}-- level:${skill_bar_level.value}`);
     new_skill.appendChild(input)
 
     skills_list.appendChild(new_skill)

@@ -401,6 +401,7 @@ button.red {
 .jobs_section {
     width: 90%;
     margin: 6rem auto;
+    text-align: center;
 }
 
 
@@ -418,6 +419,7 @@ body .card {
     transition: all 0.3s;
     display: table;
     border-radius: 15px;
+    text-align: left;
 }
 
 
