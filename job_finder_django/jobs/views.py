@@ -7,6 +7,7 @@ from .forms import jobStatsForm, jobFindForm
 from .jobs_filter import job_request, filter_offer_info, return_display_info
 from .jobs_categories import categories
 from .job_skills import all_skills
+from .content_based_filter import create_user_skills_dic, sort_all_offers, get_best_offers_and_info
 
 
 # Create your views here.
@@ -19,7 +20,7 @@ def home(request):
         if form.is_valid():
 
             #pass form data to display_stats function
-            request.session['web_input'] = form.cleaned_data
+            request.session['form_input'] = form.cleaned_data
             return redirect('display_stats')
 
 
@@ -36,11 +37,12 @@ def find_job(request):
         
         if form.is_valid():
             formData = form.cleaned_data
-            print(formData)
-            print(request.POST.getlist('mylist[]'))
+            # print(formData)
+            # print(request.POST.getlist('user_skills_list[]'))
 
             #pass form data to display_stats function
-            #request.session['web_input'] = form.cleaned_data
+            request.session['form_input'] = formData
+            request.session['skills_list'] = request.POST.getlist('user_skills_list[]')
             return redirect('personalized_offers')
             
 
@@ -53,7 +55,7 @@ def find_job(request):
 
 
 def display_stats(request):
-    form_values = request.session.get('web_input')
+    form_values = request.session.get('form_input')
 
     data = job_request('https://justjoin.it/api/offers')
 
@@ -67,7 +69,28 @@ def display_stats(request):
 
 
 def personalized_offers(request):
-    return render(request, 'personalized_offers.html')
+
+    form_values = request.session.get('form_input')
+    user_skills_list = request.session.get('skills_list')
+    user_skills_dic = create_user_skills_dic(user_skills_list)
+
+    data = job_request('https://justjoin.it/api/offers')
+
+    sorted_offers = sort_all_offers(data, 4, user_skills_dic)
+    
+    personalized_offers = get_best_offers_and_info(sorted_offers, user_skills_dic)
+    # print(personalized_offers)
+    
+    context = {'offers':personalized_offers}
+    
+    
+
+    return render(request, 'personalized_offers.html', context)
+
+
+
+
+
 
 
 
