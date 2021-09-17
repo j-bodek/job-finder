@@ -38,8 +38,10 @@ def find_job(request):
             formData = form.cleaned_data
             print(formData)
             print(request.POST.getlist('mylist[]'))
+
             #pass form data to display_stats function
             #request.session['web_input'] = form.cleaned_data
+            return redirect('personalized_offers')
             
 
 
@@ -64,6 +66,8 @@ def display_stats(request):
     return render(request, 'stats.html', context)
 
 
+def personalized_offers(request):
+    return render(request, 'personalized_offers.html')
 
 
 
