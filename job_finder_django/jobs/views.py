@@ -37,17 +37,32 @@ def find_job(request):
         
         if form.is_valid():
             formData = form.cleaned_data
-            # print(formData)
-            # print(request.POST.getlist('user_skills_list[]'))
 
-            #pass form data to display_stats function
-            request.session['form_input'] = formData
-            request.session['skills_list'] = request.POST.getlist('user_skills_list[]')
+            
+            #get all jobs ids and create valid user dictionary
+            form_values = formData
+            user_skills_list = request.POST.getlist('user_skills_list[]')
+            user_skills_dic = create_user_skills_dic(user_skills_list)
+
+            #request
+            data = job_request('https://justjoin.it/api/offers')
+
+            sorted_offers = sort_all_offers(data, 30, user_skills_dic, form_values)
+            
+            personalized_offers = get_best_offers_and_info(sorted_offers, user_skills_dic)
+
+            #create sessions with best jobs info
+            request.session['form_values'] = form_values
+            request.session['user_skills_list'] = user_skills_list
+            request.session['personalized_offers'] = personalized_offers
+
             return redirect('personalized_offers')
             
 
 
     all_skills.sort()
+
+
     context = {'skills':all_skills, 'form':form}
 
     return render(request, 'find_job.html', context)
@@ -70,16 +85,11 @@ def display_stats(request):
 
 def personalized_offers(request):
 
-    form_values = request.session.get('form_input')
-    user_skills_list = request.session.get('skills_list')
-    user_skills_dic = create_user_skills_dic(user_skills_list)
+    #Get informations
 
-    #request
-    data = job_request('https://justjoin.it/api/offers')
-
-    sorted_offers = sort_all_offers(data, 30, user_skills_dic, form_values)
-    
-    personalized_offers = get_best_offers_and_info(sorted_offers, user_skills_dic)
+    personalized_offers = request.session.get('personalized_offers')
+    form_values = request.session.get('form_values')
+    user_skills_list = request.session.get('user_skills_list')
 
     
     context = {'offers':personalized_offers, 'form_values':form_values, 'user_skills_list':user_skills_list}

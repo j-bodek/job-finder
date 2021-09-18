@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     path('liked_jobs/', views.liked_jobs, name='liked_jobs'),
+    path('add_like/', views.add_like, name='add_like'),
+
     path('recomended_jobs/', views.recomended_jobs, name='recomended_jobs'),
     path('login/', views.login_user, name='login'),
     path('logout/', views.logout_user, name='logout'),

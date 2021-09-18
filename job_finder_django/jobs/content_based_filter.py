@@ -85,7 +85,8 @@ def get_common_skills_num(offer, good_offers_dict, with_details, user_skills_lis
             user_values, offer_values = create_skills_array(offer, user_skills_list)
             eucl_distance = euclidean_distance(offer_values, user_values)
 
-            offer = {'name': offer['title'],
+            offer = {'id': offer['id'],
+                    'name': offer['title'],
                     'city':offer['city'],
                     'salary': offer["employment_types"],
                     'skills':offer['skills'],
