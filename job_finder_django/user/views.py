@@ -8,12 +8,6 @@ from django.contrib.auth import login, authenticate, logout
 
 
 
-def liked_jobs(request):
-    return render(request, 'jobs.html')
-
-def recomended_jobs(request):
-    return render(request, 'jobs.html')
-
 def login_user(request):
 
     if request.method == 'POST':
@@ -41,6 +35,12 @@ def login_user(request):
     return render(request, 'login.html')
 
 
+def logout_user(request): 
+    logout(request)
+    messages.error(request, 'User logout')
+    return redirect('home')
+
+
 
 def register(request):
 
@@ -59,3 +59,11 @@ def register(request):
 
 
     return render(request, 'register.html', {'form':form})
+
+
+
+def liked_jobs(request):
+    return render(request, 'jobs.html')
+
+def recomended_jobs(request):
+    return render(request, 'jobs.html')

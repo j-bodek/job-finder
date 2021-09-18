@@ -5,5 +5,6 @@ urlpatterns = [
     path('liked_jobs/', views.liked_jobs, name='liked_jobs'),
     path('recomended_jobs/', views.recomended_jobs, name='recomended_jobs'),
     path('login/', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout'),
     path('register/', views.register, name='register'),
 ]
