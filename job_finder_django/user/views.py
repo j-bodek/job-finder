@@ -1,11 +1,8 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-import requests
+from .forms import CustomUserCreationForm
+from django.contrib.auth.models import User
+from django.contrib import messages
 # import requests
-
-
-
-
 
 
 
@@ -19,4 +16,19 @@ def login(request):
     return render(request, 'login.html')
 
 def register(request):
-    return render(request, 'register.html')
+
+    form = CustomUserCreationForm()
+
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(request, 'User account was created!')
+            # return redirect('register')
+
+        else:
+            messages.error(request, 'Something went wrong!')
+            # return redirect('register')
+
+
+    return render(request, 'register.html', {'form':form})

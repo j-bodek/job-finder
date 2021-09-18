@@ -1,4 +1,5 @@
 {% extends 'main.html' %} 
+{% load static %}
 
 {% block content %}
 
@@ -96,3 +97,7 @@
 
 
 {% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/search.js' %}"></script>
+{% endblock js %}

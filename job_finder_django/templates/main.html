@@ -6,21 +6,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Document</title>
 </head>
 <body>
     
   {% include 'navbar.html' %}
 
+
+    
   
+  {% if messages %} 
+  {% for message in messages %}
+    
+  <div class="toast toast--{{message.tags}}">
+    <div class="toast__icon">
+    <i class="fas fa-check"></i>
+    <i class="fas fa-exclamation-circle"></i>
+    </div>
+    <div class="toast__content">
+      <p class="toast__message">{{message}}</p>
+    </div>
+    <div class="toast__close">
+      <i class="fas fa-times"></i>
+    </div>
+  </div>
+
+  {% endfor %} 
+  {% endif %} 
+
+
+
   {% block content %} 
 
 
   {% endblock content %}
 
+
+
   {% block js %}
-  {% endblock %}
+  {% endblock js %}
+
+  
 
 </body>
+<!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
 <script src="{% static 'js/main.js' %}"></script>
 </html>

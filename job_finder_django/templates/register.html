@@ -11,13 +11,22 @@
 <div class="main-section">
 
 <!-- register form -->
-      <form id = 'register_form'>
+      <form id = 'register_form' method="POST" acction ="{% url 'register' %}">
   
         <div class="segment">
           <h1>Sign Up</h1>
         </div>
+
+        {% csrf_token %}
+
+        {% for field in form %} 
+
+        <label>{{field}}</label>
         
-        <label>
+
+        {% endfor %}
+        
+        <!-- <label>
           <input type="text" placeholder="Username"/>
         </label>
 
@@ -36,11 +45,11 @@
         <label>
             <input class="checkbox-effect checkbox-effect-1" id="get-up-1" type="checkbox" value="get-up-1" name="get-up-1"/>
             <label class="checkbox_text" for="get-up-1">Get notificitions about new jobs for you</label>
-        </label>
+        </label> -->
         
         
 
-        <button class="red" type="button"><i class="icon ion-md-lock"></i>Login</button>
+        <button class="red" type="submit"><i class="icon ion-md-lock"></i>Login</button>
         
         
       </form>
