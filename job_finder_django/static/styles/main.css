@@ -430,19 +430,26 @@ body .card nav {
     padding: 10px 20px 20px 20px;
     border-bottom: 2px solid #efefef;
     font-size: 12px;
+    text-align: right;
 }
 
-body .card nav svg.heart {
-    height: 24px;
-    width: 24px;
-    float: right;
+body .card nav .fa-heart {
+    font-size: 24px;
     margin-top: -3px;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
-body .card nav svg.heart:hover {
-    fill: red;
+body .card nav .full_heart {
+    color: red;
+}
+
+body .card nav .empty_heart:hover {
+    color: red;
+}
+
+body .card nav .full_heart:hover {
+    color: #727272;
 }
 
 

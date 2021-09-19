@@ -91,8 +91,17 @@ def personalized_offers(request):
     form_values = request.session.get('form_values')
     user_skills_list = request.session.get('user_skills_list')
 
+    #already liked offers
+    if request.user.is_authenticated:
+        liked_offers_ids = request.user.offer_set.all().values("offer_id") 
+        liked_offers_ids = [liked_offer['offer_id'] for liked_offer in liked_offers_ids]
+    else:
+        liked_offers_ids = []
     
-    context = {'offers':personalized_offers, 'form_values':form_values, 'user_skills_list':user_skills_list}
+    context = {'offers':personalized_offers, 
+            'form_values':form_values, 
+            'user_skills_list':user_skills_list,
+            'liked_offers_ids':liked_offers_ids}
     
     
 
@@ -105,14 +114,14 @@ def personalized_offers(request):
 
 
 
-def liked_jobs(request):
-    return render(request, 'jobs.html')
+# def liked_jobs(request):
+#     return render(request, 'jobs.html')
 
-def recomended_jobs(request):
-    return render(request, 'jobs.html')
+# def recomended_jobs(request):
+#     return render(request, 'jobs.html')
 
-def login(request):
-    return render(request, 'login.html')
+# def login(request):
+#     return render(request, 'login.html')
 
-def register(request):
-    return render(request, 'register.html')
+# def register(request):
+#     return render(request, 'register.html')
