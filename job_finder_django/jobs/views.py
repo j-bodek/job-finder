@@ -106,22 +106,3 @@ def personalized_offers(request):
     
 
     return render(request, 'personalized_offers.html', context)
-
-
-
-
-
-
-
-
-# def liked_jobs(request):
-#     return render(request, 'jobs.html')
-
-# def recomended_jobs(request):
-#     return render(request, 'jobs.html')
-
-# def login(request):
-#     return render(request, 'login.html')
-
-# def register(request):
-#     return render(request, 'register.html')

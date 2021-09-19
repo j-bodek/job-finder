@@ -52,7 +52,7 @@ def filter_offer_info(job_offers, categories, form_data):
 
         
         city = job['city']
-        if form_data['location'] != '' and city != form_data['location']:
+        if form_data['location'] != '' and city.lower() != form_data['location'].lower():
             continue
 
         level = job['experience_level']

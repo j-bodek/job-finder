@@ -65,7 +65,6 @@ def register(request):
 
 
 
-
 @login_required(login_url='login')
 def add_like(request):
 
@@ -131,13 +130,6 @@ def add_like(request):
 
 
 @login_required(login_url='login')
-def delete_offer(request):
-    return redirect('personalized_offers')
-
-
-
-
-@login_required(login_url='login')
 def liked_jobs(request):
     user = request.user
 
@@ -160,10 +152,5 @@ def liked_jobs(request):
         
     context = {'offers_info':offers_info}
 
-    return render(request, 'jobs.html', context)
+    return render(request, 'liked_offers.html', context)
 
-
-
-@login_required(login_url='login')
-def recomended_jobs(request):
-    return render(request, 'jobs.html')

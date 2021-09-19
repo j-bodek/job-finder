@@ -5,16 +5,16 @@
 
     <nav role="navigation" class="primary-navigation">
         <ul>
-        <li><a href="{% url 'home' %}">Home</a></li>
-
+            <li><a href="">Home &dtrif;</a>
+                <ul class="dropdown">
+                    <li><a href="{% url 'home' %}">Check Stats</a></li>
+                    <li><a href="{% url 'find_job' %}">Find something for you</a></li>
+                </ul>
+            </li>
+            
         {% if request.user.is_authenticated %}
-        <li><a href="">My Account &dtrif;</a>
-            <ul class="dropdown">
             <li><a href="{% url 'liked_jobs' %}">Liked</a></li>
-            <li><a href="{% url 'recomended_jobs' %}">Recommended</a></li>
-            </ul>
-        </li>
-        <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}
         <li><a href="{% url 'login' %}">Login/Sing In</a></li>
         {% endif %}
