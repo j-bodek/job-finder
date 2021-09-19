@@ -24,7 +24,6 @@ def login_user(request):
             messages.error(request, 'Ups.. email does not exist')
 
         user = authenticate(request, username = username, password = password)
-        print(user)
 
         if user:
             login(request, user)

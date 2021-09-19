@@ -397,6 +397,36 @@ button.red {
     cursor: pointer;
 }
 
+
+
+/* JUST JOIN IT CREDIT */
+.justjoinit_credit {
+    position: absolute;
+    display: block;
+    height: 150px;
+    text-align: right;
+    margin-left: 6rem;
+}
+
+.justjoinit_credit>h3>a {
+    color: #727272;
+    /* font-size: 300px; */
+}
+
+.justjoinit_credit>h3>a:hover {
+    color: #90e0ef;
+}
+
+.justjoinit_credit>p {
+    margin-right: 20px;
+}
+
+.justjoinit_credit>p>i {
+    font-size: 25px;
+}
+
+
+
 /* JOBS OFFERS */
 .jobs_section {
     width: 90%;
