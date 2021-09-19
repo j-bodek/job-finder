@@ -733,3 +733,12 @@ body .card .description a:hover {
 .toast--error:before {
     background-color: #f94144;
 }
+
+footer {
+    background-color: #E0F0F5;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 5px;
+}
