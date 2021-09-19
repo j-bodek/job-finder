@@ -74,9 +74,23 @@ def add_like(request):
         
         #get offer info
         values = request.POST
+        
 
         # check if offer is not already in liked 
-        if not request.user.offer_set.filter(offer_id=values['id'][1:]):
+        try:
+
+                #Get offer by id
+            offer = request.user.offer_set.filter(offer_id=values['delete'][1:])
+            
+            #delete offer
+            offer.delete()
+
+            messages.error(request, 'Offer removed from liked')
+
+            #redirect to liked offers
+            return redirect('liked_jobs')
+
+        except:
 
             offer = Offer()
 
@@ -110,11 +124,8 @@ def add_like(request):
 
             messages.success(request, 'Offer add to liked')
 
-        else:
-            messages.error(request, 'You already liked this offer')
-
-
-    return redirect('personalized_offers')
+            #redirect to personalized offers
+            return redirect('personalized_offers')
 
 
 
