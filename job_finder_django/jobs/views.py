@@ -12,6 +12,11 @@ from .content_based_filter import create_user_skills_dic, sort_all_offers, get_b
 
 # Create your views here.
 
+
+
+
+
+
 def home(request):
     form = jobStatsForm()
 

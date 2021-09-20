@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.contrib.auth import views as auth_views
+from django.conf.urls import handler404
 
 
 urlpatterns = [
@@ -33,3 +34,6 @@ urlpatterns = [
     # send message that password was successfuly reseted
     path('reset_password_complete', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
 ]
+
+
+handler404 = 'user.views.error_404'

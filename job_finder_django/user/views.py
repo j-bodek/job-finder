@@ -10,6 +10,11 @@ from .models import Offer, skill_and_sallary
 
 
 
+def error_404(request, exception):
+    return render(request, 'error_404.html')
+
+
+
 def login_user(request):
 
     if request.method == 'POST':
