@@ -108,6 +108,5 @@ def personalized_offers(request):
             'user_skills_list':user_skills_list,
             'liked_offers_ids':liked_offers_ids}
     
-    
 
     return render(request, 'personalized_offers.html', context)
