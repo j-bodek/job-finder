@@ -1,3 +1,9 @@
+html,
+body,
+.container {
+    min-height: calc(100vh - 30px) !important;
+}
+
 body {
     background-color: #edf6f9;
     padding: 0;
@@ -737,8 +743,8 @@ body .card .description a:hover {
 footer {
     background-color: #E0F0F5;
     width: 100%;
-    position: absolute;
-    bottom: 0;
+    position: relative;
     text-align: center;
     padding: 5px;
+    height: 30px;
 }
