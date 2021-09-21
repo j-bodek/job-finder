@@ -1,0 +1,60 @@
+{% extends 'main.html' %} 
+
+{% block content %} 
+
+
+<div class='main-section'>
+<form method='POST'>
+    {% csrf_token %}
+    <!-- prevent submiting form after hiting enter -->
+    <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
+      <div class="segment">
+        <h1>Specify informations about job that you are looking for</h1>
+      </div>
+
+
+      <label>
+        <input type="text">
+      <ul class="value-list">
+        <li>All</li>
+        <li>Frontend</li>
+        <li>Backend</li>
+        <li>Full Stack</li>
+        <li>Machine Learning</li>
+        <li>Data</li>
+    </ul>
+  </label> 
+
+
+      <label>
+        <input type="text">
+      </label>
+
+
+      <label class = "skill_box">
+      <p>Click Enter to submit skill</p>
+
+        <input id="skill_bar" class="chosen-value" type="text" placeholder="Skill" autocomplete="off"/>
+        <input id="skill_bar_level" class="skill_level_input" type="number" min="1" max="5" placeholder="Skill Level" autocomplete="off"/>
+        <ul class="value-list">
+          {% for skill in skills %}
+          <li class='dropdown_items'>{{skill}}</li>
+          {% endfor %}
+        </ul>
+        
+
+
+          <ul id="skills" class='skills'>
+          </ul>
+      </label>
+
+
+      <button class="red" type="submit"><i class="icon ion-md-lock"></i>Search</button>
+      
+      
+    </form>
+
+</div>
+
+{% endblock content %}
