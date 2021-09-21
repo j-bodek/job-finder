@@ -6,7 +6,7 @@
   <div class="jobs_section">
 
     <!-- Display if not any offer -->
-    {% if not offer in offers %}
+    {% if not offers %}
       <h2>Sorry we couldn't find any job offer for:</h2>
       <p>Category: {{form_values.category}}</p>
       <p>Location: {{form_values.location}}</p>
