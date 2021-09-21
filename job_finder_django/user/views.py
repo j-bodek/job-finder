@@ -25,17 +25,19 @@ def login_user(request):
         try:
             user = User.objects.get(email=email)
             username = user.get_username()
+
+            user = authenticate(request, username = username, password = password)
+
+            if user:
+                login(request, user)
+                messages.success(request, 'Welcome Back!')
+                return redirect('home')
+            else:
+                messages.error(request, 'Ups.. email or password is incorrect')
+
+
         except:
             messages.error(request, 'Ups.. email does not exist')
-
-        user = authenticate(request, username = username, password = password)
-
-        if user:
-            login(request, user)
-            messages.success(request, 'Welcome Back!')
-            return redirect('home')
-        else:
-            messages.error(request, 'Ups.. email or password is incorrect')
 
 
     return render(request, 'login.html')

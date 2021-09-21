@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'rchb=d%6(k-6o0g&+az-q*06v2f1!ul!2s@y*)=3^!6+(ex-ul'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['job-finder-it.herokuapp.com']
 
@@ -91,6 +91,16 @@ DATABASES = {
         'POST':'5432',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'JobFinder',
+#         'USER': 'postgres',
+#         'PASSWORD':'J@kub2002',
+#         'HOST':'localhost',
+#         'POST':'5432',
+#     }
+# }
 
 # DATABASES = {
 #     'default': {
@@ -145,9 +155,9 @@ EMAIL_HOST_PASSWORD = 'flxtauwdkmqorrcg'
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
