@@ -91,16 +91,7 @@ DATABASES = {
         'POST':'5432',
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'JobFinder',
-#         'USER': 'postgres',
-#         'PASSWORD':'J@kub2002',
-#         'HOST':'localhost',
-#         'POST':'5432',
-#     }
-# }
+
 
 # DATABASES = {
 #     'default': {
