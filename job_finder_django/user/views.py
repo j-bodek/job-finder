@@ -58,13 +58,21 @@ def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            messages.success(request, 'User account was created!')
-            # return redirect('register')
+            email = form.cleaned_data['email']
+            # Check if user with the same email is in database
+            try:
+                user = User.objects.get(email=email)
+            except:
+                user = None
 
-        else:
-            messages.error(request, 'Something went wrong!')
-            # return redirect('register')
+            if not user:
+                user = form.save()
+                messages.success(request, 'User account was created!')
+                return redirect('login')
+
+            else:
+                messages.error(request, 'Email is already taken!')
+                return redirect('register')
 
 
     return render(request, 'register.html', {'form':form})

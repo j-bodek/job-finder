@@ -49,10 +49,46 @@
         
         
 
-        <button class="red" type="submit"><i class="icon ion-md-lock"></i>Login</button>
+        <button class="red" type="submit"><i class="icon ion-md-lock"></i>Sign Up</button>
         
         
       </form>
+
+      <!-- is username exist -->
+      {% for error in form.username.errors %}
+
+      <div class="toast toast--error">
+        <div class="toast__icon">
+        <i class="fas fa-check"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        </div>
+        <div class="toast__content">
+          <p class="toast__message">{{error}}</p>
+        </div>
+        <div class="toast__close">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      <!-- is password is invalid  -->
+      {% for error in form.username.errors %}
+
+      <div class="toast toast--error">
+        <div class="toast__icon">
+        <i class="fas fa-check"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        </div>
+        <div class="toast__content">
+          <p class="toast__message">{{error}}</p>
+        </div>
+        <div class="toast__close">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+
+    {% endfor %}
 
 
   </div>
