@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'rchb=d%6(k-6o0g&+az-q*06v2f1!ul!2s@y*)=3^!6+(ex-ul'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ddah.herokuapp.com']
 
 
 # Application definition
@@ -83,12 +84,11 @@ WSGI_APPLICATION = 'job_finder.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'JobFinder',
-        'USER': 'postgres',
-        'PASSWORD':'J@kub2002',
-        'HOST':'localhost',
+        'NAME': 'da4a5osqm9083t',
+        'USER': 'lgnzfafiakckog',
+        'PASSWORD':'4080820b51e909b930be640e91b3ca7c7a58f5ea66d955c68a0762dc636d5d49',
+        'HOST':'ec2-54-228-162-209.eu-west-1.compute.amazonaws.com',
         'POST':'5432',
-
     }
 }
 
@@ -144,7 +144,10 @@ EMAIL_HOST_PASSWORD = 'flxtauwdkmqorrcg'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+django_heroku.settings(locals())
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
