@@ -27,7 +27,7 @@ SECRET_KEY = 'rchb=d%6(k-6o0g&+az-q*06v2f1!ul!2s@y*)=3^!6+(ex-ul'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['job-finder-it.herokuapp.com']
+ALLOWED_HOSTS = ['check--it.herokuapp.com']
 
 
 # Application definition
