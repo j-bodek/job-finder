@@ -155,9 +155,9 @@ EMAIL_HOST_PASSWORD = 'flxtauwdkmqorrcg'
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
