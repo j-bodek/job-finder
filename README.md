@@ -28,10 +28,20 @@ After that it run filtering function that get informations only about jobs that 
 - most common nice to have skills
 
 Last three of them are very easy to do and are calculated with following function:
-```javascript
-function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
-}
+```python
+def most_common_in_list(lst, outputs_num):
+    most_common = []
+    amounts = []
+    for i in range(outputs_num):
+        try:
+            output = max(set(lst), key=lst.count)
+            output_amount = lst.count(output)
+            amounts.append(output_amount)
+            most_common.append(output)
+            lst = list(filter(lambda a: a != output, lst))
+        except:
+            break
+    
+    return {'labels' : most_common, 
+            'data': amounts}
 ```
