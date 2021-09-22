@@ -56,3 +56,13 @@ def salary_range(salary_ranges, start_salary, end_salary):
     sec_col = (salary_ranges[:, 1] <= salary[:, 1]).astype(int)
     return np.multiply(first_col, sec_col)
 ```
+Firstly that function create numpy array of shape (100,2) where every column is earlier calculated salary ranges then it make (100,2) array where first column is
+minimal salary and second is maximum salary. After that it check where salary is lower then min (for first column) and higher then max (for second column) and 
+give anwer as 0 and 1 then just multiply two collumns and we get array that visualise salary range.
+
+
+
+# Recomended offers
+App get:
+- offer category
+- off
