@@ -65,4 +65,14 @@ give anwer as 0 and 1 then just multiply two collumns and we get array that visu
 # Recomended offers
 App get:
 - offer category
-- off
+- location
+- user skills with levels in range 1-5
+
+Then filter offers and useing euclidean distance calculate best offer for our user.Basicly we use here content base filtering with all features that we need specified by the user so only what we have to do is to find offers that match best to him.
+Why eucludiean distance instead of cosine similarity? Euclidean distance is way better then cosine similarity in our case because if we consider situation when offer will require pytho:4 and java:4 and user1 will have python:2 and java:2 when we 
+would presented them as vectors on chart vectors would be collinear and cosine similarity would be equal 1 so user2 with python:4 and java:4 would get same cosine similarity score which is unacceptable because their have different experience level. Thats why euclidean distance solve problem and indicates that user2 is closer to offer then user1.
+
+Eucludiean Distance
+```python
+np.linalg.norm(np.subtract(offer_values,user_values))
+```
