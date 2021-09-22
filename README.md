@@ -45,3 +45,14 @@ def most_common_in_list(lst, outputs_num):
     return {'labels' : most_common, 
             'data': amounts}
 ```
+
+More complicated is to calculate salaries because every offer has it given in range for example 5000-6000 so it should be count as 5000,5500 and 6000.
+There I used numpy arrays to calculate that.
+```python
+def salary_range(salary_ranges, start_salary, end_salary):
+    salary_ranges = np.c_[np.array(salary_ranges),np.array(salary_ranges)]
+    salary = np.c_[np.full((100),start_salary), np.full((100),end_salary)]
+    first_col = (salary_ranges[:, 0] >= salary[:, 0]).astype(int)
+    sec_col = (salary_ranges[:, 1] <= salary[:, 1]).astype(int)
+    return np.multiply(first_col, sec_col)
+```
